@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <title>DOCX to XLSX Converter</title>
+    <style>
+      body {
+        background-color: #f8f9fa;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .container {
+        margin-top: 20px;
+      }
+      .card-header, .card-footer {
+        background-color: #007bff;
+        color: white;
+      }
+      .btn-primary {
+        background-color: #007bff;
+        border: none;
+      }
+      .btn-primary:hover {
+        background-color: #0056b3;
+      }
+      .navbar {
+        margin-bottom: 20px;
+      }
+      .instructions {
+        margin-top: 20px;
+      }
+      .instructions h5 {
+        margin-bottom: 10px;
+      }
+      footer {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 0;
+        text-align: center;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+      }
+      .navbar-brand img {
+        height: 40px;
+        margin-right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/"><img src="{{ url_for('static', filename='img/logo.png') }}" alt="Site Logo">DOCX to XLSX Converter</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row mt-4">
+        <div class="col-md-6 offset-md-3">
+          <div class="card">
+            <div class="card-header text-center">
+              <h3>Upload DOCX and Convert to XLSX</h3>
+            </div>
+            <div class="card-body">
+              <p class="text-center">Easily convert your DOCX files to XLSX format. Just upload your DOCX file and click "Upload".</p>
+              <form method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                  <label for="file">Choose DOCX file</label>
+                  <input type="file" name="file" class="form-control-file" id="file">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Upload</button>
+              </form>
+              <div class="instructions">
+                <h5 class="text-center"><i class="fas fa-info-circle"></i> How to Use</h5>
+                <ul>
+                  <li>Click on "Choose DOCX file" button to select your file.</li>
+                  <li>Click on "Upload" button to start the conversion process.</li>
+                  <li>Wait a few seconds for the file to be processed.</li>
+                  <li>Download the converted XLSX file using the link provided.</li>
+                </ul>
+                <h5 class="text-center"><i class="fas fa-question-circle"></i> FAQ</h5>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">Question</th>
+                      <th scope="col">Answer</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>What types of files are supported?</td>
+                      <td>Currently, only DOCX files are supported.</td>
+                    </tr>
+                    <tr>
+                      <td>How long does the conversion take?</td>
+                      <td>The conversion typically takes a few seconds.</td>
+                    </tr>
+                    <tr>
+                      <td>Is there a file size limit?</td>
+                      <td>Yes, the file size should not exceed 10MB.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            {% if filename %}
+            <div class="card-footer text-center">
+              <a href="{{ url_for('uploaded_file', filename=filename) }}" class="btn btn-success">Download the converted file</a>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2024 DOCX to XLSX Converter. All rights reserved.</p>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
